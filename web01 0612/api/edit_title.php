@@ -1,6 +1,8 @@
 <?php
-$dsn = "mysql:host=localhost;charset=utf8;dbname=db01";
-$pdo = new PDO($dsn, 'root', '');
+
+// $dsn = "mysql:host=localhost;charset=utf8;dbname=db01";
+// $pdo = new PDO($dsn, 'root', '');
+include_once "base.php";
 
 
 // $_POST['text'] => array()

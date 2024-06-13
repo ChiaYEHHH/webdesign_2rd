@@ -11,8 +11,8 @@
                     <td></td>
                 </tr>
                 <?php
-                $dsn="mysql:host=localhost;charset=utf8;dbname=db01";
-                $pdo=new PDO($dsn, 'root', '');
+                // $dsn="mysql:host=localhost;charset=utf8;dbname=db01";
+                // $pdo=new PDO($dsn, 'root', '');
                 $sql="select * from title";
                 $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                 foreach($rows as $row){

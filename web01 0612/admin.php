@@ -88,7 +88,7 @@ include_once "./api/base.php";
 					</tbody>
 				</table>
 				<?php
-				$do = $_GET['do'] ?? 'main';
+				$do = $_GET['do'] ?? 'title';
 				$file = "./backend/{$do}.php";
 				if (file_exists($file)) {
 					include $file;

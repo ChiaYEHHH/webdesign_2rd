@@ -18,7 +18,7 @@ class DB
 
     public function all(...$arg)
     {
-        $sql = "select * from `$this->table`";
+        $sql = "select * from  `$this->table`";
 
         if (isset($arg[0])) {
             if (is_array($arg[0])) {
@@ -32,6 +32,7 @@ class DB
         if (isset($arg[1])) {
             $sql .= $arg[1];
         }
+        //echo $sql;
 
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -47,7 +48,7 @@ class DB
         }
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
-    public function save(...$arg)
+    public function save($arg)
     {
         if (isset($arg['id'])) {
             // update
@@ -58,7 +59,7 @@ class DB
             // insert
             $keys = array_keys($arg);
             $sql = "insert into `$this->table` (`" . join("`,`", $keys) . "`) 
-            values('" . join("','", $arg) . "')";
+                    values('" . join("','", $arg) . "')";
         }
         return $this->pdo->exec($sql);
     }
@@ -98,7 +99,7 @@ class DB
     {
         $tmp = [];
         foreach ($array as $key => $value) {
-            $tmp[] = "`$key`=>'$value'";
+            $tmp[] = "`$key`='$value'";
         }
         return $tmp;
     }
@@ -127,4 +128,9 @@ function dd($array)
 
 
 $Title = new DB('title');
-dd($Titile->all(['id' => 1]));
+$Ad = new DB('ad');
+$Mvim = new DB('mvim');
+$Image = new DB('image');
+$News = new DB('news');
+$Admin = new DB('admin');
+$Menu = new DB('menu');

@@ -1,24 +1,24 @@
-<h3 class="cent">新增標題區圖片</h3>
+<h3 class='cent'>新增主選單</h3>
+<hr>
 
 <form action="./api/add.php" method="post" enctype="multipart/form-data">
     <table>
         <tr>
-            <td>標題區圖片:</td>
-            <td><input type="file" name="img" id="img"></td>
+            <td>主選單文字：</td>
+            <td><input type="text" name="href" id="href"></td>
         </tr>
         <tr>
-            <td>標題區替代文字:</td>
+            <td>選單超連結：</td>
             <td><input type="text" name="text" id="text"></td>
         </tr>
+
         <tr>
             <td>
-                <!-- input:submit+input:reset -->
-                <input type="hidden" name="table" value='title'>
+                <input type="hidden" name="table" value='menu'>
                 <input type="submit" value="新增">
                 <input type="reset" value="重置">
             </td>
-            <td>
-            </td>
+            <td></td>
         </tr>
     </table>
 </form>

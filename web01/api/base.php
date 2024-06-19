@@ -61,6 +61,7 @@ class DB
             $sql = "insert into `$this->table` (`" . join("`,`", $keys) . "`) 
                     values('" . join("','", $arg) . "')";
         }
+        // echo $sql;
         return $this->pdo->exec($sql);
     }
     public function del($arg)
@@ -77,7 +78,7 @@ class DB
     }
     public function count(...$arg)
     {
-        $sql = "select cound(*) from `$this->table`";
+        $sql = "select count(*) from `$this->table`";
 
         if (isset($arg[0])) {
             if (is_array($arg[0])) {
@@ -134,3 +135,5 @@ $Image = new DB('image');
 $News = new DB('news');
 $Admin = new DB('admin');
 $Menu = new DB('menu');
+$Buttom = new DB('buttom');
+$Total = new DB('views');

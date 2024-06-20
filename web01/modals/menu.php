@@ -5,11 +5,11 @@
     <table>
         <tr>
             <td>主選單文字：</td>
-            <td><input type="text" name="href" id="href"></td>
+            <td><input type="text" name="text" id="text"></td>
         </tr>
         <tr>
             <td>選單超連結：</td>
-            <td><input type="text" name="text" id="text"></td>
+            <td><input type="text" name="href" id="href"></td>
         </tr>
 
         <tr>

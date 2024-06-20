@@ -10,8 +10,8 @@ if (isset($_POST['id'])) {
             $db->del($id);
         } else {
             $row = $db->find($id);
-            $row['href'] = $_POST['herf']['$key'];
-            $row['text'] = $_POST['text']['$key'];
+            $row['href'] = $_POST['href'][$key];
+            $row['text'] = $_POST['text'][$key];
             $db->save($row);
         }
     }

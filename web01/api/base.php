@@ -1,14 +1,11 @@
 <?php
-// $dsn = "mysql:host=localhost;charset=utf8;dbname=db01";
-// $pdo = new PDO($dsn, 'root', '');
+session_start();
 
 class DB
 {
-
     protected $table;
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db01";
     protected $pdo;
-
 
     public function __construct($table)
     {
@@ -46,24 +43,28 @@ class DB
         } else {
             $sql .= " where `id`='$arg'";
         }
+        //echo $sql;
+
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
+
     public function save($arg)
     {
         if (isset($arg['id'])) {
-            // update
+            //update
             $tmp = $this->a2s($arg);
             $sql = "update `$this->table` set " . join(",", $tmp);
             $sql .= " where `id`='{$arg['id']}'";
         } else {
-            // insert
+            //insert
             $keys = array_keys($arg);
             $sql = "insert into `$this->table` (`" . join("`,`", $keys) . "`) 
-                    values('" . join("','", $arg) . "')";
+                   values('" . join("','", $arg) . "')";
         }
-        // echo $sql;
+
         return $this->pdo->exec($sql);
     }
+
     public function del($arg)
     {
         $sql = "delete from `$this->table` ";
@@ -76,9 +77,10 @@ class DB
 
         return $this->pdo->exec($sql);
     }
+
     public function count(...$arg)
     {
-        $sql = "select count(*) from `$this->table`";
+        $sql = "select count(*) from  `$this->table`";
 
         if (isset($arg[0])) {
             if (is_array($arg[0])) {
@@ -92,9 +94,11 @@ class DB
         if (isset($arg[1])) {
             $sql .= $arg[1];
         }
+        //echo $sql;
 
         return $this->pdo->query($sql)->fetchColumn();
     }
+
 
     protected function a2s($array)
     {
@@ -102,6 +106,7 @@ class DB
         foreach ($array as $key => $value) {
             $tmp[] = "`$key`='$value'";
         }
+
         return $tmp;
     }
 }
@@ -110,7 +115,7 @@ class DB
 
 function q($sql)
 {
-    $dsn = "mysql:host=localhost;charset=utf8;dbname=db15";
+    $dsn = "mysql:host=localhost;charset=utf8;dbname=db01";
     $pdo = new PDO($dsn, 'root', '');
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -128,6 +133,7 @@ function dd($array)
 }
 
 
+
 $Title = new DB('title');
 $Ad = new DB('ad');
 $Mvim = new DB('mvim');
@@ -135,5 +141,12 @@ $Image = new DB('image');
 $News = new DB('news');
 $Admin = new DB('admin');
 $Menu = new DB('menu');
-$Buttom = new DB('buttom');
+$Bottom = new DB('bottom');
 $Total = new DB('views');
+
+if (!isset($_SESSION['view'])) {
+    $total = $Total->find(1);
+    $total['view']++;
+    $Total->save($total);
+    $_SESSION['view'] = $total['view'];
+}

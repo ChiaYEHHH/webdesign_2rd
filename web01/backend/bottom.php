@@ -6,8 +6,8 @@
                 <tr class="yel">
                     <td width="50%">頁尾版權資料</td>
                     <td width="50%">
-                        <?php $bot = $Buttom->find(1)['buttom']; ?>
-                        <input type="text" name="buttom" id="buttom" value="<?= $bot; ?>">
+                        <?php $bot = $Bottom->find(1)['bottom']; ?>
+                        <input type="text" name="bottom" id="bottom" value="<?= $bot; ?>">
                     </td>
                 </tr>
             </tbody>

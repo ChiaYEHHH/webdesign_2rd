@@ -1,7 +1,6 @@
 <?php include_once "../api/base.php"; ?>
 <h3 class='cent'>編輯次選單</h3>
 <hr>
-
 <form action="./api/submenu.php" method="post" enctype="multipart/form-data">
     <table style='width:70%;margin:auto;' id="submenu">
         <tr>
@@ -11,7 +10,7 @@
         </tr>
         <?php
         $rows = $Menu->all(['main_id' => $_GET['id']]);
-        foreach ($rows as $row) {   
+        foreach ($rows as $row) {
         ?>
             <tr>
                 <td><input type="text" name="text[]" value="<?= $row['text']; ?>"></td>

@@ -5,12 +5,14 @@ class DB
 {
     protected $table;
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db01";
+    // protected $dsn = "mysql:host=localhost;charset=utf8;dbname=s1130112";
     protected $pdo;
 
     public function __construct($table)
     {
         $this->table = $table;
         $this->pdo = new PDO($this->dsn, 'root', '');
+        // $this->pdo = new PDO($this->dsn, 's1130112', 's1130112');
     }
 
     public function all(...$arg)
@@ -116,7 +118,9 @@ class DB
 function q($sql)
 {
     $dsn = "mysql:host=localhost;charset=utf8;dbname=db01";
+    // $dsn = "mysql:host=localhost;charset=utf8;dbname=s1130112";
     $pdo = new PDO($dsn, 'root', '');
+    // $pdo = new PDO($dsn, 's1130112', 's1130112');
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
@@ -143,6 +147,15 @@ $Admin = new DB('admin');
 $Menu = new DB('menu');
 $Bottom = new DB('bottom');
 $Total = new DB('views');
+// $Title = new DB('web01_title');
+// $Ad = new DB('web01_ad');
+// $Mvim = new DB('web01_mvim');
+// $Image = new DB('web01_image');
+// $News = new DB('web01_news');
+// $Admin = new DB('web01_admin');
+// $Menu = new DB('web01_menu');
+// $Bottom = new DB('web01_bottom');
+// $Total = new DB('web01_views');
 
 if (!isset($_SESSION['view'])) {
     $total = $Total->find(1);
